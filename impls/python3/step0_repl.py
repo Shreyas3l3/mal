@@ -10,7 +10,7 @@ def eval_(ast: str) -> str:
 
 
 def print_(form: str) -> str:
-    return form
+    return form 
 
 
 def rep(source: str) -> str:
@@ -20,7 +20,7 @@ def rep(source: str) -> str:
 def main() -> None:
     while True:
         try:
-            print(rep(mal_readline.input_('user> ')))
+            print_(rep(mal_readline.input_('user> ')))
         except EOFError:
             break
 

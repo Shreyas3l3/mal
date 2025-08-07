@@ -9,17 +9,22 @@ repl_env = {
 }    
 
 def eval_expr(ast, env):
+
     if isinstance(ast, sexpdata.Symbol):
         symbol = str(ast)
         if symbol in env:
             return env[symbol]
         raise Exception(f"Symbol not found: {symbol}")
+        
     
     elif isinstance(ast, list):
         if len(ast) == 0:
             return ast  
+        # this becomes the lambda function
         fn = eval_expr(ast[0], env)
+        # list of values
         args = [eval_expr(arg, env) for arg in ast[1:]]
+        # * unpacks list of arguments
         return fn(*args)
     
     else:
